@@ -27,10 +27,33 @@ Array [
  },
 ]
 
+input 에 입력된 데이터를 저장하는 버튼에 달려 있는
+handleSubmit 함수에서 console.log(inputValue) 를 찍어보니
+undefined 라고 나와 이 함수가 잘못된 것이 아닐지...
+const handleSubmit = () => {
+        if (!lineToBeEdited) {
+            handleAddLine({
+                sentence: inputValue,
+                // to make a string use `${}`
+                // if the array is not empty(a key(index) count start with 0, so put -1) && check the key of the last element
+                // convert it to an integer, +1 to it, return the new value as a string for the new key
+                // if the array is empty, current inputValue will be the first line -> () || 1
+                key: `${ (list[list.length-1] && parseInt(list[list.length -1].key) + 1) || 1}`
+            });
+             console.log(inputValue)
+            setInputValue('');
+        } else {
+            handleEditLine({
+                sentence: inputValue,
+                key: lineToBeEdited.key
+            })
+        }
+        setInputValue('');
+    };
+
 2.
 list 에 있는 문장의 갯수를 카운트 중
-입력은 카운트를 잘 하는데 삭제는 카운트를 못하는 듯함
-0개가 되면 카운트를 하나 일정하게 기능하지 못하는 것 같음
+입력은 카운트를 잘 하는데 삭제는 카운트를 못함
 
 {/* 입력한 문장 카운팅 */}
 <Text style={styles.sumNumber}> {(list[list.length-1] && parseInt(list[list.length -1].key)) || 0} sentences </Text>
