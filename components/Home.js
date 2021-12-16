@@ -13,10 +13,15 @@ const Home = ({list, setList}) => {
 
   // Modal visibility (default is false, when tapped it will be visible (true) -> pass the value to the inputModal.js via <InputModal/> ) & input value
   const [modalVisible, setModalVisible] = useState(false); 
-  const [InputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState();
 
   // function to add a new sentence, (take a parameter which is the line coming from the input modal)
-  const handleAddLine = (newLine) => {
+  const handleAddLine = () => {
+
+    const newLine = {
+      sentence: inputValue,
+      key: `${ (list[list.length-1] && parseInt(list[list.length -1].key) + 1) || 1}`
+    }
 
     const newList = [...list, newLine];
  
@@ -24,6 +29,8 @@ const Home = ({list, setList}) => {
       setList(newList);
       setModalVisible(false);
     }).catch(error => console.log(error));
+
+    console.log(newLine)
  
   }
 
@@ -64,7 +71,7 @@ const Home = ({list, setList}) => {
         <InputModal
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
-          InputValue={InputValue}
+          inputValue={inputValue}
           setInputValue={setInputValue}
           handleAddLine={handleAddLine}
           // Adding list(pass the list) to be able to access it in the inputModal file
@@ -82,7 +89,7 @@ const Home = ({list, setList}) => {
       <View style={styles.box3}>
         {/* <TouchableOpacity><Text style={styles.categoryText}>Category ▼</Text></TouchableOpacity> */}
 
-        {/* 입력한 문장 카운팅 */}
+        {/* 입력한 문장 카운팅, 삭제 상태 관리가 안되고 있음 */}
         <Text style={styles.sumNumber}> {(list[list.length-1] && parseInt(list[list.length -1].key)) || 0} sentences </Text>
       </View>
 
