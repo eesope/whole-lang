@@ -11,6 +11,10 @@ import PushSetting from './PushSetting';
 
 const Home = ({list, setList}) => {
 
+  // Modal visibility for setting view
+  const [settingModalVisible, setSettingModalVisible] = useState(false);
+
+
   // Modal visibility (default is false, when tapped it will be visible (true) -> pass the value to the inputModal.js via <InputModal/> ) & input value
   const [modalVisible, setModalVisible] = useState(false); 
   const [inputValue, setInputValue] = useState();
@@ -30,7 +34,7 @@ const Home = ({list, setList}) => {
       setModalVisible(false);
     }).catch(error => console.log(error));
 
-    console.log(newLine)
+    // console.log(newLine)
  
   }
 
@@ -81,7 +85,10 @@ const Home = ({list, setList}) => {
           handleEditLine={handleEditLine}
         />
 
-        <PushSetting />
+        <PushSetting 
+        settingModalVisible={settingModalVisible}
+        setSettingModalVisible={setSettingModalVisible}
+        />
 
 
       </View>

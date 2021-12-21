@@ -21,10 +21,8 @@ const InputModal = ({
     }
 
     const handleSubmit = () => {
-
         if (!lineToBeEdited) {
             handleAddLine({
-                // category: ,
                 sentence: inputValue,
                 // to make a string use `${}`
                 // if the array is not empty(a key(index) count start with 0, so put -1) && check the key of the last element
@@ -33,7 +31,7 @@ const InputModal = ({
                 key: `${ (list[list.length-1] && parseInt(list[list.length -1].key) + 1) || 1}`
             });
             
-            console.log(inputValue)
+            // console.log(inputValue)
             setInputValue('');
 
         } else {
@@ -51,7 +49,6 @@ const InputModal = ({
         setInputValue(inputValue)
         // console.log(inputValue)
     }
-
 
 
     return (
@@ -86,11 +83,11 @@ const InputModal = ({
 
                         <View style={styles.modalActionGroup}>
                             <TouchableOpacity style={styles.modalAction} onPress={handleCloseModal}>
-                                <Text>🔙</Text>
+                                <Text style={styles.closeButton}>🔙</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.modalAction} onPress={handleSubmit}>
-                                <Text>✔️</Text>
+                                <Text style={styles.closeButton}>✔️</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -159,6 +156,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
 
+    },
+
+    closeButton: {
+        fontSize: 30
     },
 
 

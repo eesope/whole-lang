@@ -25,6 +25,8 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
             data={list}
             renderItem={(data) => {
 
+                // console.log(data)
+
                 return (
                     <View style={styles.card}>
                         <>
@@ -66,7 +68,7 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
             previewOpenValue={70}
             previewOpenDelay={3000}
             style={{
-                flex: 1, paddingBottom: 550, marginBottom: 100, backgroundColor: '#eee'
+                flex: 1, paddingBottom: 550, marginBottom: 100, 
             }}
 
         />}

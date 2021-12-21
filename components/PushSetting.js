@@ -2,23 +2,78 @@ import React from "react";
 import { Modal, StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 
 
-const PushSetting = () => {
+const PushSetting = ({
+    settingModalVisible, 
+    setSettingModalVisible, 
+}) => {
+
+    const handleCloseModal = () => {
+        setSettingModalVisible(false);
+    }
 
     return (
+        <>
 
-        <TouchableOpacity onPress={() => {setModalVisible(true)}}>
-            <Text style={styles.pushSettingText}> * </Text>
-        </TouchableOpacity>
+            <TouchableOpacity onPress={() => {setSettingModalVisible(true)}}>
+                <Text style={styles.pushSettingText}> * </Text>
+            </TouchableOpacity>
+
+            <Modal
+            animationType="slide"
+            transparent={true}
+            visible={settingModalVisible}
+            onRequestClose={handleCloseModal}
+            >
+                <ScrollView style={styles.settingContainer}>
+
+                    <Text style={styles.settingTitle}>Settings</Text>
+                    <TouchableOpacity style={styles.modalAction} onPress={handleCloseModal}><Text style={styles.closeButton}>🔚</Text></TouchableOpacity>
+
+
+
+
+                </ScrollView>
+
+            </Modal>
+
+        </>
 
     );
 }
 
 const styles = StyleSheet.create({
     pushSettingText: {
-        fontSize: 68,
+        fontSize: 65,
         fontWeight: '700',
-
     },
+
+    settingContainer: {
+        backgroundColor: '#4caf50'
+    },
+
+
+    settingTitle: {
+        textAlign: 'center',
+        fontSize: 30,
+        fontWeight: '700',
+        marginTop: 50
+    },
+
+    modalAction: {
+        width: 60,
+        height: 60,
+        backgroundColor: '#fff',
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 10,
+        marginTop: 10
+    },
+
+    closeButton: {
+        fontSize: 30
+    },
+
 
 
 });
