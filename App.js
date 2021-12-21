@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,6 +12,8 @@ export default function App() {
 
   //initial list of sentences, make array
   const [list, setList] = useState([]);
+
+  // useEffect(() => console.log(list), [list]);
 
   // load list from the async storage
   const loadList = () => {
