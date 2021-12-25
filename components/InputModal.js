@@ -31,7 +31,6 @@ const InputModal = ({
                 key: `${ (list[list.length-1] && parseInt(list[list.length -1].key) + 1) || 1}`
             });
             
-            // console.log(inputValue)
             setInputValue('');
 
         } else {
@@ -47,7 +46,6 @@ const InputModal = ({
     // input 이 잘 들어오는지 console.log 로 테스트하기 위해 함수 뺴서 만듬
     const inputText = inputValue => {
         setInputValue(inputValue)
-        // console.log(inputValue)
     }
 
 
@@ -71,8 +69,8 @@ const InputModal = ({
                         <TextInput 
                             style={styles.InputBox}
                             placeholder='Type here...'
-                            placeholderTextColor={'#fff'}
-                            selectionColor={'#673AB7'}
+                            placeholderTextColor={'#f6f6f6'}
+                            selectionColor={'#f6f6f6'}
                             autoFocus={true}
                             
                             // onChangeText 에서 setInputValue의 함수 미지정 오류가 있었으나 이중 뷰로 한층 더 감싸니 갑자기 사라짐
@@ -115,15 +113,12 @@ const styles = StyleSheet.create({
 
     modalContainer: {
         padding: 20,
-        // justifyContent: 'center',
-        // alignItems: 'center',
         flex: 1,
-        backgroundColor: '#D1C4E9'
+        backgroundColor: '#f6f6f6'
 
     },
 
     modalView: {
-        // backgroundColor: '#fff',
         borderRadius: 20,
         justifyContent: 'center',
         padding: 20
@@ -132,10 +127,11 @@ const styles = StyleSheet.create({
     InputBox: {
         width: 300,
         height: 100,
-        backgroundColor: '#9575CD',
+        backgroundColor: '#004dcf',
         marginTop: 50,
         padding: 10,
         fontSize: 16,
+        color: '#f6f6f6',
         borderRadius: 10,
         letterSpacing: 1
     

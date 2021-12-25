@@ -6,7 +6,7 @@ import ListItems from './ListItems';
 import InputModal from './InputModal';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import PushSetting from './PushSetting';
+import Settings from './Settings';
 
 
 const Home = ({list, setList}) => {
@@ -33,8 +33,6 @@ const Home = ({list, setList}) => {
       setList(newList);
       setModalVisible(false);
     }).catch(error => console.log(error));
-
-    // console.log(newLine)
  
   }
 
@@ -70,7 +68,6 @@ const Home = ({list, setList}) => {
       <StatusBar style="auto" />
 
       <View style={styles.box2}>
-        {/* <TouchableOpacity><Text style={styles.searchText}> ? </Text></TouchableOpacity> */}
       
         <InputModal
           modalVisible={modalVisible}
@@ -85,19 +82,15 @@ const Home = ({list, setList}) => {
           handleEditLine={handleEditLine}
         />
 
-        <PushSetting 
+        <Settings 
         settingModalVisible={settingModalVisible}
         setSettingModalVisible={setSettingModalVisible}
         />
 
-
       </View>
 
       <View style={styles.box3}>
-        {/* <TouchableOpacity><Text style={styles.categoryText}>Category ▼</Text></TouchableOpacity> */}
-
-        {/* 입력한 문장 카운팅, 삭제 상태 관리가 안되고 있음 */}
-        <Text style={styles.sumNumber}> {(list[list.length-1] && parseInt(list[list.length -1].key)) || 0} sentences </Text>
+        <Text style={styles.sumNumber}>  {list.length} sentences </Text>
       </View>
 
         <ListItems
@@ -106,6 +99,8 @@ const Home = ({list, setList}) => {
           handleTriggerEdit={handleTriggerEdit}
         />
 
+
+
     </View>
 
   );
@@ -113,8 +108,8 @@ const Home = ({list, setList}) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex:1,
-    backgroundColor: '#fff',
+    flex:1,
+    backgroundColor: '#f6f6f6',
   },
 
   title: {

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 const ListItems = ({ list, setList, handleTriggerEdit }) => {
 
@@ -15,23 +14,23 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
         AsyncStorage.setItem('storedList', JSON.stringify(newList)).then(() => {
             setList(newList);
         }).catch(error => console.log(error));
-
     }
+
+    // console.log(list)
+
+
 
     return (
         <>
         {list.length == 0 && <Text style={styles.nothingText}> Try + button to add a sentence you want to remember :) </Text> }
+        
         {list.length !== 0 && <SwipeListView
             data={list}
             renderItem={(data) => {
-
-                // console.log(data)
-
                 return (
                     <View style={styles.card}>
                         <>
-                            {/* <Text style={styles.cardCategory}>{data.item.category}</Text> */}
-                            <Text style={styles.cardDesc} numberOfLines={1}>{data.item.sentence}</Text>
+                            <Text style={styles.sentence} numberOfLines={1}>{data.item.sentence}</Text>
                         </>
                     </View>
 
@@ -64,11 +63,8 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
 
             leftOpenValue={70}
             rightOpenValue={-70}
-            previewRowKey={'1'}
-            previewOpenValue={70}
-            previewOpenDelay={3000}
             style={{
-                flex: 1, paddingBottom: 550, marginBottom: 100, 
+                paddingBottom: 550, marginBottom: 100, 
             }}
 
         />}
@@ -89,27 +85,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomColor: "#000",
         borderBottomWidth: 0.5,
-
-        // 보더 스타일 적용이 안됨
-        // borderStyle: 'dashed',
-        backgroundColor: '#fff',
+        backgroundColor: '#f6f6f6',
         paddingLeft: 20
-
     },
 
-    cardCategory: {
-        flex: 0.5,
-        marginLeft: 15,
-        fontSize: 20,
-
-    },
-
-    cardDesc: {
+    sentence: {
         flex: 2,
-        // flexDirection: 'column',
         fontSize: 20,
-
-
     },
 
     swipeHiddenItemContainer: {
@@ -117,7 +99,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#f6f6f6',
         flexDirection: 'row',
     },
     swipeHiddenItem: {
@@ -128,7 +110,7 @@ const styles = StyleSheet.create({
     },
 
     swipeHiddenItemText: {
-        color: '#fff',
+        color: '#f6f6f6',
         fontSize: 14,
     },
 

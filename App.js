@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
+import React, { useState, useEffect, useRef } from 'react';
+import { Text, View, Button, Platform } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppLoading from 'expo-app-loading';
+import * as  Notifications from 'expo-notifications';
+import Constants from 'expo-constants';
 
 import Home from './components/Home';
+
+
 
 export default function App() {
 
