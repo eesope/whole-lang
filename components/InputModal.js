@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 
+// React-navigation 의 ModalScreen 을 쓰면 더 깔끔한지 고민 중
 
 const InputModal = ({
     modalVisible, 
