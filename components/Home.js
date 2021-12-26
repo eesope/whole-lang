@@ -6,14 +6,28 @@ import ListItems from './ListItems';
 import InputModal from './InputModal';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Settings from './Settings';
+import AppLoading from 'expo-app-loading';
 
 
-const Home = ({list, setList}) => {
+const Home = ({navigation, route}) => {
 
-  // Modal visibility for setting view
-  const [settingModalVisible, setSettingModalVisible] = useState(false);
+  const [ready, setReady] = useState(false);
 
+  //initial list of sentences, make array
+  const [list, setList] = useState([]);
+
+  // useEffect(() => console.log(list), [list]);
+
+  // load list from the async storage
+  const loadList = () => {
+    AsyncStorage.getItem('storedList').then(data => {
+      if (data !== null) {
+        setList(JSON.parse(data))
+
+        // console.log(list)
+      }
+    }).catch((error) => console.log(error));
+  }
 
   // Modal visibility (default is false, when tapped it will be visible (true) -> pass the value to the inputModal.js via <InputModal/> ) & input value
   const [modalVisible, setModalVisible] = useState(false); 
@@ -60,12 +74,21 @@ const Home = ({list, setList}) => {
 
   }
 
+
+  if (!ready) {
+    return(
+      <AppLoading
+        startAsync={loadList}
+        onFinish={() => setReady(true)}
+        onError={console.warn}
+      />
+    )
+  }
+
+
   return (
 
     <View style={styles.container}>
-
-      <Text style={styles.title}>My list</Text>
-      <StatusBar style="auto" />
 
       <View style={styles.box2}>
       
@@ -82,10 +105,9 @@ const Home = ({list, setList}) => {
           handleEditLine={handleEditLine}
         />
 
-        <Settings 
-        settingModalVisible={settingModalVisible}
-        setSettingModalVisible={setSettingModalVisible}
-        />
+        <TouchableOpacity style={styles.settingButton} onPress={()=>{navigation.navigate('Settings')}}>
+          <Text style={styles.settingText}> * </Text>
+        </TouchableOpacity>
 
       </View>
 
@@ -110,13 +132,6 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: '#f6f6f6',
-  },
-
-  title: {
-    fontSize: 30,
-    marginTop: 50,
-    fontWeight: '700',
-    textAlign: 'center'
   },
 
   box1: {

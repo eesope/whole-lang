@@ -1,48 +1,21 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import ReadMe from './ReadMe';
 
-
-const Settings = ({
-    settingModalVisible, 
-    setSettingModalVisible, 
-}) => {
-
-    const handleCloseModal = () => {
-        setSettingModalVisible(false);
-    }
+const Settings = ({navigation, route}) => {
 
     return (
-        <>
 
-            <TouchableOpacity onPress={() => {setSettingModalVisible(true)}}>
-                <Text style={styles.pushSettingText}> * </Text>
-            </TouchableOpacity>
+        <ScrollView style={styles.settingContainer}>
 
-            <Modal
-            animationType="slide"
-            transparent={true}
-            visible={settingModalVisible}
-            onRequestClose={handleCloseModal}
-            >
-                <ScrollView style={styles.settingContainer}>
+            <TouchableOpacity onPress={()=>{navigation.navigate('ReadMe')}}><View style={styles.menuBox}>
+                <Text style={styles.menuText}>👀 Read me</Text>
+            </View></TouchableOpacity>
 
-                    <Text style={styles.settingTitle}>Settings</Text>
-                    <TouchableOpacity style={styles.modalAction} onPress={handleCloseModal}><Text style={styles.closeButton}>🔚</Text></TouchableOpacity>
+            <TouchableOpacity><View style={styles.menuBox}>
+                <Text style={styles.menuText}>🔔 Notification Setting</Text>
+            </View></TouchableOpacity>
 
-                    <TouchableOpacity onPress={ReadMe}><View style={styles.menuBox}>
-                        <Text style={styles.menuText}>👀 Read me</Text>
-                    </View></TouchableOpacity>
-
-                    <TouchableOpacity><View style={styles.menuBox}>
-                        <Text style={styles.menuText}>🔔 Notification Setting</Text>
-                    </View></TouchableOpacity>
-
-                </ScrollView>
-
-            </Modal>
-
-        </>
+        </ScrollView>
 
     );
 }
@@ -55,30 +28,6 @@ const styles = StyleSheet.create({
 
     settingContainer: {
         backgroundColor: '#f6f6f6'
-    },
-
-
-    settingTitle: {
-        textAlign: 'center',
-        fontSize: 20,
-        fontWeight: '700',
-        marginTop: 50
-    },
-
-    modalAction: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#fff',
-        borderRadius: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: 10,
-        marginTop: 10,
-        marginBottom: 30
-    },
-
-    closeButton: {
-        fontSize: 30,
     },
 
     menuBox: {
