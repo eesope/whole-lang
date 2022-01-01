@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import ListItems from './ListItems';
 import InputModal from './InputModal';
@@ -89,6 +89,7 @@ const Home = ({navigation, route}) => {
   return (
 
     <View style={styles.container}>
+      <StatusBar style="auto" />
 
       <View style={styles.box2}>
       
