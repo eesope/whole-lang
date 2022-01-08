@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ListItems = ({ list, setList, handleTriggerEdit }) => {
+import * as Speech from 'expo-speech';
+// import Tts from 'react-native-tts';
+
+const ListItems = ({ list, setList, handleTriggerEdit}) => {
 
     const handleDelete = (rowMap, rowKey) => {
         const newList = [...list];
@@ -16,9 +19,26 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
         }).catch(error => console.log(error));
     }
 
-    // console.log(list)
+    console.log(list)
 
-
+    const readSentence = () => {
+        const sentence = `${list.sentence}`;
+        const options = {
+            language: 'en-GB', 
+            language: 'en-IE', 
+            language: 'en-AU', 
+            language: 'en-US', 
+            language: 'ja-JP', 
+            language: 'ko-KR', 
+            language: 'ru-RU', 
+            language: 'zh-CN', 
+            language: 'zh-TW',
+            language: 'fi-FI',
+            language: 'de-DE'
+        };
+        Speech.speak(sentence, options)
+        console.log(sentence)
+    }
 
     return (
         <>
@@ -28,7 +48,7 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
             data={list}
             renderItem={(data) => {
                 return (
-                    <TouchableOpacity activeOpacity={0.9}><View style={styles.card}>
+                    <TouchableOpacity activeOpacity={0.9} onPress={readSentence}><View style={styles.card}>
                         <>
                             <Text style={styles.sentence} numberOfLines={1} selectable={true}>{data.item.sentence}</Text>
                         </>
@@ -56,21 +76,15 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
                                 <Text style={styles.swipeHiddenItemText}>Delete</Text>
                             </View></TouchableOpacity>
                     </View>
-
                 )
-
             }}
-
             leftOpenValue={70}
             rightOpenValue={-70}
             style={{
                 paddingBottom: 550, marginBottom: 100, 
             }}
-
         />}
         </>
-
-
     );
 
 }
