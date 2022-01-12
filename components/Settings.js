@@ -1,5 +1,12 @@
-import React from 'react';
-import { Modal, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Platform } from 'react-native';
+
+import Constants from 'expo-constants';
+import * as  Notifications from 'expo-notifications';
+// This refers to the function defined earlier in this guide, in Push Notifications Set Up
+import registerForPushNotificationsAsync from '../RegisterForPushNotificationsAsync';
+
+
 
 const Settings = ({navigation, route}) => {
 
@@ -11,8 +18,8 @@ const Settings = ({navigation, route}) => {
                 <Text style={styles.menuText}>👀 Read me</Text>
             </View></TouchableOpacity>
 
-            <TouchableOpacity><View style={styles.menuBox}>
-                <Text style={styles.menuText}>🔔 Notification Setting</Text>
+            <TouchableOpacity onPress={()=>{navigation.navigate('Notifications')}}><View style={styles.menuBox}>
+                <Text style={styles.menuText}>🔔 Notifications</Text>
             </View></TouchableOpacity>
 
         </ScrollView>

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ListItems = ({ list, setList, handleTriggerEdit }) => {
+// import Tts from 'react-native-tts';
+
+const ListItems = ({ list, setList, handleTriggerEdit}) => {
 
     const handleDelete = (rowMap, rowKey) => {
         const newList = [...list];
@@ -16,9 +18,11 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
         }).catch(error => console.log(error));
     }
 
+    // const readSentence = () => {
+    //     Tts.speak();
+    // }
+
     // console.log(list)
-
-
 
     return (
         <>
@@ -30,7 +34,9 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
                 return (
                     <View style={styles.card}>
                         <>
-                            <Text style={styles.sentence} numberOfLines={1}>{data.item.sentence}</Text>
+                            <TouchableOpacity ><Text style={styles.readIcon}>🔊</Text></TouchableOpacity>
+
+                            <Text style={styles.sentence} numberOfLines={1} selectable={true}>{data.item.sentence}</Text>
                         </>
                     </View>
 
@@ -56,21 +62,15 @@ const ListItems = ({ list, setList, handleTriggerEdit }) => {
                                 <Text style={styles.swipeHiddenItemText}>Delete</Text>
                             </View></TouchableOpacity>
                     </View>
-
                 )
-
             }}
-
             leftOpenValue={70}
             rightOpenValue={-70}
             style={{
                 paddingBottom: 550, marginBottom: 100, 
             }}
-
         />}
         </>
-
-
     );
 
 }
@@ -92,6 +92,11 @@ const styles = StyleSheet.create({
     sentence: {
         flex: 2,
         fontSize: 20,
+    },
+
+    readIcon: {
+        fontSize: 20,
+        marginRight: 10
     },
 
     swipeHiddenItemContainer: {

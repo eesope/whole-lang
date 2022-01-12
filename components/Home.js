@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
 
   box2: {
     height: 50,
-    flexDirection: "row",
+    flexDirection: 'row',
     justifyContent: 'space-between',
 
   },

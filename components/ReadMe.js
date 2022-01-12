@@ -25,13 +25,17 @@ Hello!
 
 Thank you for using whole-lang!
 
-In whole-lang,
+In whole-lang, You can 
 
-You can add a new sentence via + button on home screen.
+Add a new sentence via + button on home screen.
 
-You can swipe a sentence to edit or delete.
+Swipe a sentence to edit or delete.
+
+Long press a sentence to copy it.
 
 And if you set a notification on a setting screen, whole-lang will send you a sentence randomly among your list once a day.
+
+We're working on a widget function :)
 
 Hope whole-lang could be useful!
 
