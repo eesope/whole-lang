@@ -7,6 +7,7 @@ import Home from '../components/Home';
 import Settings from '../components/Settings';
 import ReadMe from '../components/ReadMe';
 import registerForPushNotificationsAsync from '../RegisterForPushNotificationsAsync';
+import Notifications from '../components/Notifications';
 
 
 //스택 네비게이션 라이브러리가 제공해주는 여러 기능이 담겨있는 객체를 사용합니다
@@ -43,6 +44,7 @@ const StackNavigator = () =>{
             <Stack.Screen name='Settings' component={Settings}/>
             <Stack.Screen name='ReadMe' component={ReadMe}/>
             <Stack.Screen name='registerForPushNotificationsAsynce' component={registerForPushNotificationsAsync}/>
+            <Stack.Screen name='Notifications' component={Notifications}/>
             
 
         </Stack.Navigator>
