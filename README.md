@@ -1,4 +1,8 @@
 # whole-lang
 react-native, expo-cli, javascript
 
-expo notification is so so difficult... currently working on and digging it
+digging on 
+@expo notification
+@react-native-tts -> text-to-speech
+@expo speech
+@react-native-voice
