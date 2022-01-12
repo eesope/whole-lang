@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Platform } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './navigation/StackNavigator';
@@ -8,8 +8,7 @@ import StackNavigator from './navigation/StackNavigator';
 import Constants from 'expo-constants';
 import * as  Notifications from 'expo-notifications';
 // This refers to the function defined earlier in this guide, in Push Notifications Set Up
-import RegisterForPushNotificationsAsync from './RegisterForPushNotificationsAsync';
-import Home from './components/Home'
+import registerForPushNotificationsAsync from './RegisterForPushNotificationsAsync';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -89,6 +88,8 @@ export default function App() {
       }),
     });  
   }
+
+
 
   return (
 
