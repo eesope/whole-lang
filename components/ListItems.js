@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// import Tts from 'react-native-tts';
+import * as Speech from 'expo-speech';
 
 const ListItems = ({ list, setList, handleTriggerEdit}) => {
 
@@ -18,9 +18,18 @@ const ListItems = ({ list, setList, handleTriggerEdit}) => {
         }).catch(error => console.log(error));
     }
 
-    // const readSentence = () => {
-    //     Tts.speak();
+    // const listAllVoiceOptions = async () => {
+    //     let voices = await Speech.getAvailableVoicesAsync()
+    //     console.log(voices)
     // }
+    // useEffect(() => listAllVoiceOptions);
+
+    const speakEnglish = () => {
+        const sentenceEn = 'ginger'
+        Speech.speak(sentenceEn, {
+           voice : "com.apple.ttsbundle.siri_Martha_en-GB_compact"
+        })
+    }
 
     // console.log(list)
 
@@ -34,13 +43,11 @@ const ListItems = ({ list, setList, handleTriggerEdit}) => {
                 return (
                     <View style={styles.card}>
                         <>
-                            <TouchableOpacity ><Text style={styles.readIcon}>🔊</Text></TouchableOpacity>
-
+                            <TouchableOpacity onPress={speakEnglish}><Text style={styles.readIcon}>🔊</Text></TouchableOpacity>
                             <Text style={styles.sentence} numberOfLines={1} selectable={true}>{data.item.sentence}</Text>
                         </>
                     </View>
-
-
+                
                 )
 
 

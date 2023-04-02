@@ -21,10 +21,10 @@ const Notifications = ({navigation, route}) => {
             <StatusBar style='auto'/>
             <Text style={styles.notiText}>{`
 If you set a day and time, 
-wholelang will send you a sentence a day!
+wholelang will randomly pick a sentence from your list and delivery the sentence a day!
             `}
             </Text>
-            <View style={styles.menuBar}><Text style={styles.menuText}>Alarm On/Off</Text></View>
+            <View style={styles.menuBar}><Text style={styles.menuText}>Notifications On/Off</Text></View>
             <View style={styles.menuBar}><Text style={styles.menuText}>Set a day</Text></View>
             <View style={styles.menuBar}><Text style={styles.menuText}>Set a time</Text></View>
         </ScrollView>
